@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Fondamentale per evitare blocchi di sicurezza su alcuni server di mappe -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>BioBilancia · Prototipo</title>
+  
+  <!-- Leaflet CSS per la mappa -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- CSS locale -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🌿</span>
+      <div>
+        <h1>BioBilancia</h1>
+        <p id="subtitle">Rilasciare gli insetti utili solo quando servono davvero.</p>
+      </div>
+    </div>
+    <span class="badge-demo">PROTOTIPO · dati simulati</span>
+  </header>
+
+  <main>
+    <!-- 1. KPI (Indicatori chiave) -->
+    <section class="kpi" id="kpi"></section>
+
+    <!-- 2. MAPPA + DETTAGLIO ZONA -->
+    <section class="grid-map">
+      <div class="card">
+        <h2>Mappa del campo</h2>
+        <div id="map"></div>
+        <div class="legend">
+          <span><i class="dot verde"></i> Predatori sufficienti</span>
+          <span><i class="dot giallo"></i> Monitorare</span>
+          <span><i class="dot rosso"></i> Rilasciare qui</span>
+        </div>
+      </div>
+
+      <aside class="card" id="detail">
+        <h2>Dettaglio zona</h2>
+        <p class="muted">Clicca su una zona colorata nella mappa per vedere i dettagli e la raccomandazione dell'AI.</p>
+      </aside>
+    </section>
+
+    <!-- 3. LISTA SPECIE -->
+    <section class="card">
+      <div class="row-between">
+        <h2>Catalogo Specie</h2>
+        <div class="filters" id="filters">
+          <button class="active" data-filter="tutte">Tutte</button>
+          <button data-filter="parassita">Parassiti</button>
+          <button data-filter="predatore">Predatori</button>
+        </div>
+      </div>
+      <div class="species-grid" id="speciesGrid"></div>
+    </section>
+
+    <!-- 4. STATISTICA DNA -->
+    <section class="card">
+      <h2>Statistica DNA ambientale (eDNA)</h2>
+      <p class="muted">Sequenze normalizzate, rapporto predatori/parassiti e composizione dell'ultimo campionamento.</p>
+      <div class="charts">
+        <div class="chart-box">
+          <h3>Abbondanza per specie (ultimo campione)</h3>
+          <canvas id="chartBar"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Rapporto predatori / parassiti nel tempo</h3>
+          <canvas id="chartLine"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Composizione ultimo campione</h3>
+          <canvas id="chartDoughnut"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>BioBilancia · Prototipo dimostrativo · Dati e fonti simulati</p>
+  </footer>
+
+  <!-- Librerie esterne -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Script locali -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
