@@ -1,0 +1,121 @@
+:root {
+  --verde: #2ecc71;
+  --giallo: #f1c40f;
+  --rosso: #e74c3c;
+  --bg: #f4f7f2;
+  --card: #ffffff;
+  --testo: #1f2d1f;
+  --muted: #6b7a6b;
+  --bordo: #dde5da;
+  --accento: #2f7d3a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--testo);
+  line-height: 1.45;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 { margin: 0; font-size: 1.4rem; }
+h2 { margin: 0 0 12px; font-size: 1.1rem; color: var(--accento); }
+h3 { margin: 0 0 8px; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: var(--accento);
+  color: #fff;
+}
+.topbar p { margin: 2px 0 0; font-size: 0.8rem; opacity: 0.85; }
+.brand { display: flex; gap: 12px; align-items: center; }
+.logo { font-size: 1.6rem; }
+.badge-demo { background: rgba(255,255,255,0.18); padding: 4px 10px; border-radius: 999px; font-size: 0.7rem; letter-spacing: 0.05em; }
+
+/* Card Layout */
+.card {
+  background: var(--card);
+  border: 1px solid var(--bordo);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.muted { color: var(--muted); font-size: 0.85rem; margin: 0 0 12px; }
+
+/* KPI */
+.kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.kpi .card { padding: 14px; }
+.kpi .val { font-size: 1.6rem; font-weight: 700; color: var(--accento); }
+.kpi .lbl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Mappa + Dettaglio */
+.grid-map {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+#map {
+  height: 420px;
+  border-radius: 10px;
+  border: 1px solid var(--bordo);
+  background-color: #e9f5e9; /* Fallback se le mappe non caricano */
+}
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.8rem; margin-top: 12px; color: var(--muted); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+.dot.verde { background: var(--verde); }
+.dot.giallo { background: var(--giallo); }
+.dot.rosso { background: var(--rosso); }
+
+/* Dettaglio Zona */
+.pill { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; color: #fff; }
+.pill.verde { background: var(--verde); }
+.pill.giallo { background: #d4ac0d; }
+.pill.rosso { background: var(--rosso); }
+.detail-row { margin: 12px 0; font-size: 0.9rem; }
+.tag { display: inline-block; background: #eef4ec; border: 1px solid var(--bordo); padding: 2px 8px; border-radius: 6px; font-size: 0.78rem; margin: 2px 4px 2px 0; }
+.raccomandazione { background: #f3f8f2; border-left: 4px solid var(--accento); padding: 12px; border-radius: 6px; margin-top: 16px; font-size: 0.9rem;}
+
+/* Specie */
+.row-between { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+.filters button { background: transparent; border: 1px solid var(--bordo); padding: 6px 16px; border-radius: 999px; cursor: pointer; font-size: 0.8rem; color: var(--muted); transition: 0.2s; }
+.filters button:hover { background: #f0f4ee; }
+.filters button.active { background: var(--accento); color: #fff; border-color: var(--accento); }
+.species-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.specie { border: 1px solid var(--bordo); border-radius: 10px; padding: 14px; background: #fbfdfa; }
+.specie .top { display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;}
+.specie .nome { font-weight: 600; font-size: 0.95rem;}
+.specie .sci { font-style: italic; font-size: 0.8rem; color: var(--muted); }
+.specie .icona { font-size: 1.6rem; }
+.tipo { font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; display: inline-block; font-weight: 600; text-transform: capitalize;}
+.tipo.parassita { background: #fdecea; color: #b3261e; }
+.tipo.predatore { background: #e8f5e9; color: #1b5e20; }
+
+/* Grafici */
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.chart-box { border: 1px solid var(--bordo); border-radius: 10px; padding: 16px; background: #fbfdfa; }
+.chart-box canvas { max-height: 250px; width: 100% !important; }
+
+footer { text-align: center; color: var(--muted); font-size: 0.78rem; padding: 24px; }
+
+@media(max-width: 820px) {
+  .grid-map { grid-template-columns: 1fr; }
+  #map { height: 320px; }
+}
